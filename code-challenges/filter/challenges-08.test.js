@@ -9,7 +9,7 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  return arr.filter( x => x % 2 > 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +24,10 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 
 const filterStringsWithVowels = (arr) => {
-  // Solution code here...
+  return arr.filter( x => {
+    const regex = /[aeiou]/;
+    return regex.test(x);
+  });
 };
 
 
@@ -37,7 +40,7 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  return arr.filter( x => !forbiddenValues.includes(x));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,7 +83,7 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+  return arr.filter( x => x.baseStat > minBaseStat );
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,7 +95,13 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+  const answer = [];
+  arr.forEach( x => {
+    if (x.baseStat > minBaseStat) {
+      answer.push(x.stat.name);
+    }
+  });
+  return answer;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -145,7 +154,7 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-  // Solution code here...
+  return arr.filter( x => x.children === undefined);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -157,7 +166,13 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 ------------------------------------------------------------------------------------------------ */
 
 const evenOddNumericValues = (arr) => {
-  // Solution code here...
+  return arr.filter( x => typeof x === 'number').map( x => {
+    if ( x % 2 > 0 ) {
+      return 'odd';
+    } else {
+      return 'even';
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
